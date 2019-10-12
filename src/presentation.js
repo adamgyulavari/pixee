@@ -7,12 +7,15 @@ import {
   Cite,
   Deck,
   Heading,
+  Image,
   ListItem,
   List,
   Quote,
   Slide,
   Text,
 } from 'spectacle';
+
+import { QuizSlide } from './pixee';
 
 // Import theme
 import createTheme from 'spectacle/lib/themes/default';
@@ -33,6 +36,13 @@ const theme = createTheme(
   }
 );
 
+let pixieOptions = {
+  question: 'What is the question?',
+  answers: ['Answer 1', 'Answer 2', 'Answer 3', 'Answer 4'],
+  correct: 2,
+  time: 20
+}
+
 export default class Presentation extends React.Component {
   render() {
     return (
@@ -40,15 +50,19 @@ export default class Presentation extends React.Component {
         transition={['zoom', 'slide']}
         transitionDuration={500}
         theme={theme}
-      >
-        <Slide transition={['zoom']} bgColor="primary">
-          <Heading size={1} fit caps lineHeight={1} textColor="secondary">
-            Spectacle Boilerplate
-          </Heading>
-          <Text margin="10px 0 0" textColor="tertiary" size={1} fit bold>
-            open the presentation/index.js file to get started
-          </Text>
-        </Slide>
+        contentHeight={900} >
+          {/* 
+           - result slide
+           - rename to quiz slide
+           - login slide
+           - setup socket io connection
+           - handle results
+           - documentation
+           */}
+        <QuizSlide transition={['fade']} 
+               contentWidth={1200} bgColor='white' {...pixieOptions}>
+          <Image src='./assets/image.png' />
+        </QuizSlide>
         <Slide transition={['fade']} bgColor="tertiary">
           <Heading size={6} textColor="primary" caps>
             Typography
